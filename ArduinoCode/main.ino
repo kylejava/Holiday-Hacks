@@ -10,9 +10,11 @@ int b_note =  7;
 int c2_note =6;
 int buzzerPin = 5;
 
-//NOTE_C5, NOTE_D5, NOTE_E5, NOTE_F5, NOTE_G5, NOTE_A5, NOTE_B5, NOTE_C6
-// notes in the melody:
-/*int melody[] = {
+
+//IF the '-1' is present in the array, it holds the note of the previous value
+/*
+  ADD THIS LIST BACK LATER
+  int melody[] = {
   NOTE_C6, NOTE_B5, NOTE_A5, NOTE_G5, NOTE_F5,
    NOTE_E5, NOTE_D5, NOTE_C5, NOTE_G5, NOTE_A5,
    NOTE_A5, NOTE_B5, NOTE_B5, NOTE_C6, NOTE_C6,
@@ -25,14 +27,11 @@ int buzzerPin = 5;
    NOTE_D5, NOTE_C6, NOTE_C6, NOTE_A5, NOTE_G5,
    NOTE_F5, NOTE_E5, NOTE_F5, NOTE_E5, NOTE_D5,
    NOTE_C5};*/
-   int melody[] = {
-     C5_NOTE , C5_NOTE , G5_NOTE , G5_NOTE , A5_NOTE , A5_NOTE ,G5_NOTE , F5_NOTE , F5_NOTE , E5_NOTE ,E5_NOTE, D5_NOTE , D5_NOTE , C5_NOTE
-   };
+int melody[] = {
+    NOTE_E5 , NOTE_F5 , NOTE_G5 , NOTE_G5 ,-1,  NOTE_G5, NOTE_G5, -1 ,NOTE_F5 , NOTE_E5 , NOTE_D5 , NOTE_D5 , -1 , NOTE_E5, NOTE_C5 , NOTE_C5
+};
 int duration = 500;  // 500 miliseconds
 
-void setup() {
-
-int duration = 500;  // 500 miliseconds
 
 void setup() {
   pinMode(c_note , OUTPUT);
@@ -52,50 +51,56 @@ void loop() {
     // pin8 output the voice, every scale is 0.5 sencond
     if(melody[thisNote] == NOTE_C5){
       digitalWrite(c_note , HIGH);
-      tone(buzzerPin, melody[thisNote], duration);
+      //tone(buzzerPin, melody[thisNote], duration);
       currentPin = c_note;
     }
     else if(melody[thisNote] == NOTE_D5){
       digitalWrite(d_note , HIGH);
-      tone(buzzerPin, melody[thisNote], duration);
+    //  tone(buzzerPin, melody[thisNote], duration);
       //digitalWrite(d_note , LOW);
       currentPin = d_note;
     }
     else if(melody[thisNote] == NOTE_E5){
       digitalWrite(e_note , HIGH);
-      tone(buzzerPin, melody[thisNote], duration);
+      //tone(buzzerPin, melody[thisNote], duration);
       //digitalWrite(e_note , LOW);
       currentPin = e_note;
     }
     else if(melody[thisNote] == NOTE_F5){
       digitalWrite(f_note , HIGH);
-      tone(buzzerPin, melody[thisNote], duration);
+      //tone(buzzerPin, melody[thisNote], duration);
       //digitalWrite(f_note , LOW);
       currentPin = f_note;
     }
     else if(melody[thisNote] == NOTE_G5){
       digitalWrite(g_note , HIGH);
-      tone(buzzerPin, melody[thisNote], duration);
+      //tone(buzzerPin, melody[thisNote], duration);
       //digitalWrite(g_note , LOW);
       currentPin = g_note;
     }
     else if(melody[thisNote] == NOTE_A5){
       digitalWrite(a_note , HIGH);
-      tone(buzzerPin, melody[thisNote], duration);
+      //tone(buzzerPin, melody[thisNote], duration);
       //digitalWrite(a_note , LOW);
       currentPin = a_note;
     }
     else if(melody[thisNote] == NOTE_B5){
       digitalWrite(b_note , HIGH);
-      tone(buzzerPin, melody[thisNote], duration);
+      //tone(buzzerPin, melody[thisNote], duration);
       //digitalWrite(b_note , LOW);
       currentPin = b_note;
     }
     else if(melody[thisNote] == NOTE_C6){
       digitalWrite(c2_note , HIGH);
-      tone(buzzerPin, melody[thisNote], duration);
+      //tone(buzzerPin, melody[thisNote], duration);
       //digitalWrite(c2_note , LOW);
       currentPin = c2_note;
+    }
+    if(thisNote != 55 && melody[thisNote + 1] == -1){
+      tone(buzzerPin, melody[thisNote], duration*2);
+    }
+    else{
+      tone(buzzerPin, melody[thisNote], duration);
     }
 
 
