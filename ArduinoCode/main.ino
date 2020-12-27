@@ -12,12 +12,12 @@ int buzzerPin = 5;
 
 
 //IF the '-1' is present in the array, it holds the note of the previous value
-/*
-  ADD THIS LIST BACK LATER
-  int melody[] = {
-  NOTE_C6, NOTE_B5, NOTE_A5, NOTE_G5, NOTE_F5,
-   NOTE_E5, NOTE_D5, NOTE_C5, NOTE_G5, NOTE_A5,
-   NOTE_A5, NOTE_B5, NOTE_B5, NOTE_C6, NOTE_C6,
+
+ // ADD THIS LIST BACK LATER
+/*  int melody[] = {
+  NOTE_C6, -1 , NOTE_B5, NOTE_A5, NOTE_G5, -1 ,NOTE_F5,
+   NOTE_E5,-1,  NOTE_D5, -1, NOTE_C5, -1 , 1,  NOTE_G5, NOTE_A5, -1,
+   NOTE_A5, NOTE_B5,-1, NOTE_B5 ,NOTE_C6, -1, 1, NOTE_C6,
    NOTE_C6, NOTE_B5, NOTE_A5, NOTE_G5, NOTE_G5,
    NOTE_F5, NOTE_E5, NOTE_C6, NOTE_C6, NOTE_B5,
    NOTE_A5, NOTE_G5, NOTE_G5, NOTE_F5, NOTE_E5,
@@ -106,7 +106,7 @@ void loop() {
 
 
     // Output the voice after several minutes
-    delay(1000);
+    delay(350);
     digitalWrite(currentPin , LOW);
   }
   // restart after two seconds
