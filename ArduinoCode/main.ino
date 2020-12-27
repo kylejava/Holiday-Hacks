@@ -9,12 +9,12 @@ int a_note =  8;
 int b_note =  7;
 int c2_note =6;
 int buzzerPin = 5;
-
+int buttonPin = 4;
 
 //IF the '-1' is present in the array, it holds the note of the previous value
 
  // ADD THIS LIST BACK LATER
-/*  int melody[] = {
+ int melody[] = {
   NOTE_C6, -1 , NOTE_B5, NOTE_A5, NOTE_G5, -1 ,NOTE_F5,
    NOTE_E5,-1,  NOTE_D5, -1, NOTE_C5, -1 , 1,  NOTE_G5, NOTE_A5, -1,
    NOTE_A5, NOTE_B5,-1, NOTE_B5 ,NOTE_C6, -1, 1, NOTE_C6,
@@ -26,10 +26,11 @@ int buzzerPin = 5;
    NOTE_D5, NOTE_D5, NOTE_E5, NOTE_F5, NOTE_E5,
    NOTE_D5, NOTE_C6, NOTE_C6, NOTE_A5, NOTE_G5,
    NOTE_F5, NOTE_E5, NOTE_F5, NOTE_E5, NOTE_D5,
-   NOTE_C5};*/
+   NOTE_C5};
+   /*
 int melody[] = {
     NOTE_E5 , NOTE_F5 , NOTE_G5 , NOTE_G5 ,-1,  NOTE_G5, NOTE_G5, -1 ,NOTE_F5 , NOTE_E5 , NOTE_D5 , NOTE_D5 , -1 , NOTE_E5, NOTE_C5 , NOTE_C5
-};
+};*/
 int duration = 500;  // 500 miliseconds
 
 
@@ -43,10 +44,11 @@ void setup() {
   pinMode(b_note , OUTPUT);
   pinMode(c2_note , OUTPUT);
   pinMode(buzzerPin , OUTPUT);
+  pinMode(buttonPin, INPUT_PULLUP);
 }
 
-void loop() {
-  for (int thisNote = 0; thisNote < 56; thisNote++) {
+void playSong(){
+  for (int thisNote = 0; thisNote < 66; thisNote++) {
     int currentPin = 0;
     // pin8 output the voice, every scale is 0.5 sencond
     if(melody[thisNote] == NOTE_C5){
@@ -106,9 +108,14 @@ void loop() {
 
 
     // Output the voice after several minutes
-    delay(350);
+    delay(325);
     digitalWrite(currentPin , LOW);
   }
+}
+void loop() {
+  if(digitalRead(buttonPin) == LOW ){
+    playSong();
+  }
   // restart after two seconds
-  delay(2000);
+
 }
